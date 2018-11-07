@@ -13,14 +13,6 @@ app.use(bodyParser.json());
 
 app.use(methodOverride('_method'));
 
-// Timeout
-app.use(timeout(15000));
-app.use(haltOnTimedout);
-
-function haltOnTimedout(req, res, next) {
-    if (!req.timedout) next();
-}
-
 //handlebars
 var exphbs = require('express-handlebars');
 
@@ -34,7 +26,7 @@ var routes = require('./controllers/burgers_controller.js');
 
 app.use('/', routes);
 
-var PORT = process.env.PORT || 8000;
+var port = process.env.PORT || 8000;
 
 // LISTENER
-app.listen(PORT);
+app.listen(port);
