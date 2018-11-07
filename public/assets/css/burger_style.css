@@ -3,7 +3,7 @@
 }
 
 body {
-	background-color: navy;
+	background-color:navy;
 	font-size: 12px;
 	position: relative;
 }
@@ -21,9 +21,10 @@ h1 {
 	color: white;
 }
 
-h5 {
+h3 {
 	margin-top: 6%;
 	text-align: center;
+	color: white;
 }
 
 form {
@@ -32,8 +33,10 @@ form {
 
 button.addBurgerButton {
 	position: absolute;
-    border: none;
-    color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: 3px;
+    color: navy;
     padding: 1%;
     text-align: center;
     text-decoration: none;

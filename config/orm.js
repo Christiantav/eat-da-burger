@@ -73,7 +73,7 @@ var orm = {
 
       cb(result);
     });
-  },
+  }
 };
 
 // Export the orm object for the model (cat.js).

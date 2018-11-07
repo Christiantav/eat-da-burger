@@ -1,9 +1,12 @@
-// Here is where you create all the functions that will do the routing for your app
+//create all the routing for your app
 var express = require('express');
 var router = express.Router();
 var burger = require('../models/burger.js');
 
-//EXPRESS GET ROUTE
+// router.get("/", function(req, res) {
+//   res.redirect("/burgers");
+// });
+
 router.get('/', function(req, res) {
     
   burger.selectAll(function(data) {
@@ -19,25 +22,45 @@ router.get('/', function(req, res) {
 
 //EXPRESS POST ROUTE
 router.post('/burgers', function(req, res) {
-  burger.insertOne([
-    'burger_name'
-  ], [
-    req.body.burger_name
-  ], function(data) {
-    res.redirect('/');
+  // takes the request object using it as input for burger.addBurger
+  burger.insertOne(req.body.burger_name, function(result) {
+
+    console.log(result);
+
+    res.redirect("/");
   });
 });
 
 //EXPRESS PUT ROUTE
 router.put('/burgers/:id', function(req, res) {
-  var condition = 'id = ' + req.params.id;
+  burger.updateOne(req.params.id, function(result) {
 
-  burger.updateOne({
-    devoured: true
-  }, condition, function(data) {
+    console.log(result);
+
     res.redirect('/');
   });
 });
 
+
 //Experts routes for server.js to use. 
 module.exports = router;
+
+// burger.insertOne([
+//   'burger_name'
+// ], [
+//   req.body.burger_name
+// ], function(data) {
+//   res.redirect('/');
+// });
+
+
+
+
+// var condition = 'id = ' + req.params.id;
+
+// burger.updateOne({
+//   devoured: true
+// }, condition, function(data) {
+//   res.redirect('/');
+// });
+// });
